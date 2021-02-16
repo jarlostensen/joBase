@@ -9,21 +9,26 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <wchar.h>
+#include <assert.h>
 
-#ifndef _WIN32 
-#include "joWinNtLt.h"
+#if defined(__clang__) || defined(__GNUC__)
+#define _JO_ALWAYS_INLINE __attribute__((always_inline))
+#define _JO_INLINE_FUNC __attribute__((unused)) static
+
+#elif defined(_MSC_VER)
+#define _JO_ALWAYS_INLINE  __forceinline
+#define _JO_INLINE_FUNC static
+
 #endif
 
-#ifdef _MSC_VER
-#define _JO_ALWAYS_INLINE  __forceinline
-#else
-#define _JO_ALWAYS_INLINE __attribute__((always_inline))
+#ifdef _JO_BARE_METAL_BUILD 
+#include "joWinNtLt.h"
 #endif
 
 // ===============================================================================================
 
 typedef uint32_t jo_status_t;
-#define _JO_STATUS_WIDTH                     (sizeof(jos_status_t)/8)
+#define _JO_STATUS_WIDTH                     (sizeof(jo_status_t)/8)
 #define _JO_STATUS_SUCCESS                   0x80000000
 #define _JO_STATUS_ERROR_MASK                0x70000000
 #define _JO_SUCCEEDED(status)                (!!((status) & _JO_STATUS_SUCCESS))
