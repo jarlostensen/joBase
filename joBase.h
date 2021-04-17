@@ -14,6 +14,7 @@
 #if defined(__clang__) || defined(__GNUC__)
 #define _JO_ALWAYS_INLINE __attribute__((always_inline))
 #define _JO_INLINE_FUNC __attribute__((unused)) static
+#define _JO_MAYBE_UNUSED __attribute((unused))
 
 #elif defined(_MSC_VER)
 #define _JO_ALWAYS_INLINE  __forceinline

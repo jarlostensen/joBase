@@ -14,8 +14,8 @@ typedef unsigned long       DWORD;
 typedef int                 BOOL;
 typedef unsigned char       BYTE;
 typedef unsigned short      WORD;
-typedef __int64             LONGLONG;
-typedef unsigned __int64    ULONGLONG;
+typedef long long           LONGLONG;
+typedef unsigned long long  ULONGLONG;
 
 #define IMAGE_SIZEOF_SHORT_NAME              8
 
