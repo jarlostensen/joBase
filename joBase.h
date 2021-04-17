@@ -9,7 +9,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <wchar.h>
-#include <assert.h>
 
 #if defined(__clang__) || defined(__GNUC__)
 #define _JO_ALWAYS_INLINE __attribute__((always_inline))
@@ -25,6 +24,9 @@
 #ifdef _JO_BARE_METAL_BUILD 
 #include "joWinNtLt.h"
 #endif
+
+// this can be included now, since it may depend on things we've defined previously
+#include <assert.h>
 
 // ===============================================================================================
 
