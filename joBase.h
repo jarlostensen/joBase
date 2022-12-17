@@ -8,25 +8,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <wchar.h>
-
-#if defined(__clang__) || defined(__GNUC__)
-#define _JO_ALWAYS_INLINE __attribute__((always_inline))
-#define _JO_INLINE_FUNC __attribute__((unused)) static
-#define _JO_MAYBE_UNUSED __attribute((unused))
-
-#elif defined(_MSC_VER)
-#define _JO_ALWAYS_INLINE  __forceinline
-#define _JO_INLINE_FUNC static
-
-#endif
-
-#ifdef _JO_BARE_METAL_BUILD 
-#include "joWinNtLt.h"
-#endif
-
-// this can be included now, since it may depend on things we've defined previously
-#include <assert.h>
 
 // ===============================================================================================
 
